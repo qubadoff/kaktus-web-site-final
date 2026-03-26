@@ -7,8 +7,6 @@ import FaqAccordion from "./FaqAccordion";
 import { useLocale } from "@/i18n/LocaleContext";
 import type { WebsiteFaq } from "@/lib/api";
 
-const API_URL = "https://p.kaktusbooking.app/website";
-
 export default function FaqPage() {
   const { t, locale } = useLocale();
   const [faqs, setFaqs] = useState<WebsiteFaq[]>([]);
@@ -16,7 +14,7 @@ export default function FaqPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_URL}/faqs`, { headers: { "Accept-Language": locale } })
+    fetch(`/api/faqs?lang=${locale}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => { if (data?.data) setFaqs(data.data); })
       .catch(() => {})

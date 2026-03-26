@@ -8,101 +8,36 @@ import {
   Sparkles,
   HelpCircle,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/i18n/LocaleContext";
+import type { Plan } from "@/lib/api";
 
 export default function PricingPage() {
-  const { t } = useLocale();
-
-  const plans = [
-    {
-      name: t.pricing.starter,
-      description: t.pricing.starterDesc,
-      monthlyPrice: 29,
-      yearlyPrice: 24,
-      popular: false,
-      features: [
-        "Up to 3 employees",
-        "Unlimited reservations",
-        "Basic analytics dashboard",
-        "Push notifications",
-        "Customer messaging",
-        "Working hours management",
-        "Mobile app access (iOS & Android)",
-        "Email support",
-      ],
-    },
-    {
-      name: t.pricing.professional,
-      description: t.pricing.professionalDesc,
-      monthlyPrice: 59,
-      yearlyPrice: 49,
-      popular: true,
-      features: [
-        "Up to 15 employees",
-        "Unlimited reservations",
-        "Advanced analytics & reports",
-        "Push notifications",
-        "Customer messaging",
-        "Working hours & slot blocking",
-        "Product catalog & orders",
-        "Gallery & Reels",
-        "Customer database (CRM)",
-        "Web booking page",
-        "Multi-language support",
-        "Priority support",
-      ],
-    },
-    {
-      name: t.pricing.enterprise,
-      description: t.pricing.enterpriseDesc,
-      monthlyPrice: null,
-      yearlyPrice: null,
-      popular: false,
-      features: [
-        "Unlimited employees",
-        "Unlimited reservations",
-        "Custom analytics & reporting",
-        "All Professional features",
-        "API access",
-        "Custom integrations",
-        "Dedicated account manager",
-        "Custom branding",
-        "SLA guarantee",
-        "24/7 phone support",
-      ],
-    },
-  ];
-
-  const faqs = [
-    {
-      q: "Is the customer app (Kaktus Booking) free?",
-      a: "Yes! The customer app is completely free for end users. They can discover businesses, make reservations, order products, and use the AI chat assistant at no cost.",
-    },
-    {
-      q: "Can I switch plans later?",
-      a: "Absolutely. You can upgrade or downgrade your plan at any time. When upgrading, you'll be prorated for the remaining period. When downgrading, the change takes effect at the next billing cycle.",
-    },
-    {
-      q: "Do employees need separate subscriptions?",
-      a: "No. Employee accounts are included in your business plan. Each employee gets their own login with a personalized dashboard view in Kaktus Pro.",
-    },
-    {
-      q: "What payment methods do you accept?",
-      a: "We accept all major credit cards, bank transfers, and local payment methods. Enterprise customers can also pay via invoice.",
-    },
-    {
-      q: "Is there a free trial?",
-      a: "Yes! All plans come with a 14-day free trial. No credit card required. You can explore all features before committing.",
-    },
-    {
-      q: "What happens to my data if I cancel?",
-      a: "Your data is retained for 30 days after cancellation. You can export all your data at any time. After 30 days, data is permanently deleted per our privacy policy.",
-    },
-  ];
+  const { t, locale } = useLocale();
+  const [plans, setPlans] = useState<Plan[]>([]);
+  const [loading, setLoading] = useState(true);
   const [yearly, setYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch(`/api/plans?lang=${locale}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        if (data?.data) setPlans(data.data);
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [locale]);
+
+  const faqs = t.pricing.faqs;
+
+  const formatPrice = (price: string | null) => {
+    if (!price) return null;
+    const num = parseFloat(price);
+    return Number.isInteger(num) ? num.toString() : num.toFixed(2);
+  };
 
   return (
     <>
@@ -156,103 +91,127 @@ export default function PricingPage() {
       {/* Plans */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {plans.map((plan, i) => (
-              <AnimatedSection key={plan.name} delay={i * 0.1}>
-                <div
-                  className={`relative rounded-2xl p-8 h-full flex flex-col ${
-                    plan.popular
-                      ? "bg-dark text-white border-2 border-primary"
-                      : "bg-white border-2 border-gray-200"
-                  }`}
-                >
-                  {plan.popular && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-4 py-1 rounded-full">
-                      {t.pricing.popular}
-                    </span>
-                  )}
-                  <h3
-                    className={`text-xl font-bold ${
-                      plan.popular ? "text-white" : "text-dark"
-                    }`}
-                  >
-                    {plan.name}
-                  </h3>
-                  <p
-                    className={`text-sm mt-1 ${
-                      plan.popular ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    {plan.description}
-                  </p>
+          {loading ? (
+            <div className="grid lg:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="rounded-2xl border-2 border-gray-200 p-8 animate-pulse">
+                  <div className="h-6 bg-gray-200 rounded w-1/2 mb-2" />
+                  <div className="h-4 bg-gray-100 rounded w-3/4 mb-6" />
+                  <div className="h-10 bg-gray-200 rounded w-1/3 mb-8" />
+                  <div className="space-y-3">
+                    {[1, 2, 3, 4, 5].map((j) => (
+                      <div key={j} className="h-4 bg-gray-100 rounded w-full" />
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid lg:grid-cols-3 gap-8">
+              {plans.map((plan, i) => {
+                const monthly = formatPrice(plan.monthly_price);
+                const yearlyP = formatPrice(plan.yearly_price);
+                const displayPrice = yearly ? yearlyP : monthly;
+                const hasPrice = monthly !== null;
 
-                  <div className="mt-6 mb-8">
-                    {plan.monthlyPrice ? (
-                      <div className="flex items-end gap-1">
-                        <span
-                          className={`text-4xl font-bold ${
-                            plan.popular ? "text-white" : "text-dark"
-                          }`}
-                        >
-                          ${yearly ? plan.yearlyPrice : plan.monthlyPrice}
+                return (
+                  <AnimatedSection key={plan.id} delay={i * 0.1}>
+                    <div
+                      className={`relative rounded-2xl p-8 h-full flex flex-col ${
+                        plan.is_popular
+                          ? "bg-dark text-white border-2 border-primary"
+                          : "bg-white border-2 border-gray-200"
+                      }`}
+                    >
+                      {plan.is_popular && (
+                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-semibold px-4 py-1 rounded-full">
+                          {t.pricing.popular}
                         </span>
-                        <span
-                          className={`text-sm mb-1 ${
-                            plan.popular ? "text-gray-400" : "text-gray-500"
-                          }`}
-                        >
-                          {t.pricing.month}
-                        </span>
-                      </div>
-                    ) : (
-                      <span
-                        className={`text-4xl font-bold ${
-                          plan.popular ? "text-white" : "text-dark"
+                      )}
+                      <h3
+                        className={`text-xl font-bold ${
+                          plan.is_popular ? "text-white" : "text-dark"
                         }`}
                       >
-                        {t.pricing.custom}
-                      </span>
-                    )}
-                    {yearly && plan.monthlyPrice && (
-                      <p className="text-xs text-primary mt-1">
-                        Billed ${(plan.yearlyPrice ?? 0) * 12}/year
+                        {plan.name}
+                      </h3>
+                      <p
+                        className={`text-sm mt-1 ${
+                          plan.is_popular ? "text-gray-400" : "text-gray-500"
+                        }`}
+                      >
+                        {plan.description}
                       </p>
-                    )}
-                  </div>
 
-                  <ul className="space-y-3 flex-1">
-                    {plan.features.map((f) => (
-                      <li key={f} className="flex items-start gap-2.5">
-                        <CheckCircle2
-                          size={16}
-                          className="text-primary flex-shrink-0 mt-0.5"
-                        />
-                        <span
-                          className={`text-sm ${
-                            plan.popular ? "text-gray-300" : "text-gray-600"
-                          }`}
-                        >
-                          {f}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                      <div className="mt-6 mb-8">
+                        {hasPrice ? (
+                          <div className="flex items-end gap-1">
+                            <span
+                              className={`text-4xl font-bold ${
+                                plan.is_popular ? "text-white" : "text-dark"
+                              }`}
+                            >
+                              {displayPrice} ₼
+                            </span>
+                            <span
+                              className={`text-sm mb-1 ${
+                                plan.is_popular ? "text-gray-400" : "text-gray-500"
+                              }`}
+                            >
+                              {t.pricing.month}
+                            </span>
+                          </div>
+                        ) : (
+                          <span
+                            className={`text-4xl font-bold ${
+                              plan.is_popular ? "text-white" : "text-dark"
+                            }`}
+                          >
+                            {t.pricing.custom}
+                          </span>
+                        )}
+                        {yearly && hasPrice && yearlyP && (
+                          <p className="text-xs text-primary mt-1">
+                            {t.pricing.billedYearly} — {parseFloat(yearlyP) * 12} ₼
+                          </p>
+                        )}
+                      </div>
 
-                  <Link
-                    href={plan.monthlyPrice ? "/demo" : "/contact"}
-                    className={`mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all ${
-                      plan.popular
-                        ? "bg-primary text-white hover:bg-primary-dark"
-                        : "bg-dark text-white hover:bg-dark-light"
-                    }`}
-                  >
-                    {plan.monthlyPrice ? t.pricing.startTrial : t.pricing.contactSales}
-                    <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+                      <ul className="space-y-3 flex-1">
+                        {plan.features.map((f) => (
+                          <li key={f.id} className="flex items-start gap-2.5">
+                            <CheckCircle2
+                              size={16}
+                              className="text-primary flex-shrink-0 mt-0.5"
+                            />
+                            <span
+                              className={`text-sm ${
+                                plan.is_popular ? "text-gray-300" : "text-gray-600"
+                              }`}
+                            >
+                              {f.title}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Link
+                        href={hasPrice ? "/demo" : "/contact"}
+                        className={`mt-8 w-full inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold rounded-full transition-all ${
+                          plan.is_popular
+                            ? "bg-primary text-white hover:bg-primary-dark"
+                            : "bg-dark text-white hover:bg-dark-light"
+                        }`}
+                      >
+                        {hasPrice ? t.pricing.startTrial : t.pricing.contactSales}
+                        <ArrowRight size={16} />
+                      </Link>
+                    </div>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
+          )}
 
           <AnimatedSection className="text-center mt-8">
             <p className="text-sm text-gray-500">

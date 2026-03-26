@@ -80,6 +80,25 @@ export async function getImages() {
   return fetchApi<{ data: AppImage[] }>(`/images`);
 }
 
+export interface PlanFeature {
+  id: number;
+  title: string;
+}
+
+export interface Plan {
+  id: number;
+  name: string;
+  description: string | null;
+  monthly_price: string | null;
+  yearly_price: string | null;
+  is_popular: boolean;
+  features: PlanFeature[];
+}
+
+export async function getPlans(locale = "en") {
+  return fetchApi<{ data: Plan[] }>(`/plans`, locale);
+}
+
 export async function getContactInfo(): Promise<ContactInfo | null> {
   // Try website endpoint first, fallback to business support
   const data = await fetchApi<ContactInfo>(`/contact-info`);

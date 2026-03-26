@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getBlog, type Blog } from "@/lib/api";
+import type { Blog } from "@/lib/api";
 import AnimatedSection from "@/components/AnimatedSection";
 import Image from "next/image";
 import Link from "next/link";
@@ -18,10 +18,13 @@ export default function BlogDetailPage() {
 
   useEffect(() => {
     setLoading(true);
-    getBlog(slug, locale).then((data) => {
-      setBlog(data);
-      setLoading(false);
-    });
+    fetch(`/api/blog/${slug}?lang=${locale}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((data) => {
+        setBlog(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, [slug, locale]);
 
   if (loading) {

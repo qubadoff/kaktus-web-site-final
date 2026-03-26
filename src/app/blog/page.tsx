@@ -8,8 +8,6 @@ import { Sparkles, ArrowRight } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 import type { Blog } from "@/lib/api";
 
-const API_URL = "https://p.kaktusbooking.app/website";
-
 export default function BlogPage() {
   const { t, locale } = useLocale();
   const [blogs, setBlogs] = useState<Blog[]>([]);
@@ -17,7 +15,7 @@ export default function BlogPage() {
 
   useEffect(() => {
     setLoading(true);
-    fetch(`${API_URL}/blog?page=1`, { headers: { "Accept-Language": locale } })
+    fetch(`/api/blog?page=1&lang=${locale}`)
       .then((r) => (r.ok ? r.json() : null))
       .then((data) => { if (data?.data) setBlogs(data.data); })
       .catch(() => {})
