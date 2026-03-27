@@ -15,81 +15,23 @@ import {
 } from "lucide-react";
 import { useLocale } from "@/i18n/LocaleContext";
 
-const values = [
-  {
-    icon: Zap,
-    title: "Simplicity",
-    description:
-      "We believe powerful tools should be simple to use. Every feature is designed to save time, not waste it.",
-  },
-  {
-    icon: Heart,
-    title: "Customer-First",
-    description:
-      "Both businesses and their customers deserve an exceptional experience. We optimize for both sides.",
-  },
-  {
-    icon: Globe,
-    title: "Local & Global",
-    description:
-      "Built in Azerbaijan, designed for the world. Multi-language from day one, culturally aware by design.",
-  },
-  {
-    icon: Award,
-    title: "Quality",
-    description:
-      "We ship features when they're ready, not when they're rushed. Reliability is our foundation.",
-  },
-];
-
-const timeline = [
-  {
-    year: "2022",
-    title: "The Idea",
-    description:
-      "Born from the frustration of booking appointments by phone. We envisioned a seamless digital experience for service businesses.",
-  },
-  {
-    year: "2023",
-    title: "First Launch",
-    description:
-      "Kaktus Booking and Kaktus Pro launched on iOS and Android. First 50 businesses onboarded in Baku.",
-  },
-  {
-    year: "2024",
-    title: "Rapid Growth",
-    description:
-      "Expanded to 500+ businesses. Added AI chat, product ordering, reels, web booking, and advanced analytics.",
-  },
-  {
-    year: "2025",
-    title: "Scaling Up",
-    description:
-      "Multi-language support launched. Enterprise features, API access, and custom integrations now available.",
-  },
-];
-
-const team = [
-  {
-    name: "Founder & CEO",
-    description: "Visionary behind the platform, passionate about transforming service industries through technology.",
-  },
-  {
-    name: "Engineering",
-    description: "Full-stack team building native mobile apps (Flutter), robust backend (Laravel), and scalable infrastructure.",
-  },
-  {
-    name: "Design",
-    description: "Crafting intuitive, beautiful experiences that both tech-savvy users and first-time app users love.",
-  },
-  {
-    name: "Growth",
-    description: "Onboarding businesses, gathering feedback, and ensuring every user gets the most from the platform.",
-  },
-];
+const valueIcons = [Zap, Heart, Globe, Award];
 
 export default function AboutPage() {
   const { t } = useLocale();
+
+  const values = t.about.values.map((v, i) => ({
+    icon: valueIcons[i],
+    title: v.title,
+    description: v.desc,
+  }));
+
+  const timeline = t.about.timeline;
+
+  const team = t.about.teamRoles.map((r) => ({
+    name: r.name,
+    description: r.desc,
+  }));
   return (
     <>
       {/* Hero */}
@@ -203,7 +145,7 @@ export default function AboutPage() {
                       {item.title}
                     </h3>
                     <p className="text-sm text-gray-600 mt-1 leading-relaxed">
-                      {item.description}
+                      {item.desc}
                     </p>
                   </div>
                 </div>

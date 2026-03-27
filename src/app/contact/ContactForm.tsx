@@ -40,10 +40,10 @@ export default function ContactForm() {
       } else if (res.ok) {
         setSubmitted(true);
       } else {
-        setError("Something went wrong. Please try again.");
+        setError(t.contact.errorGeneral);
       }
     } catch {
-      setError("Could not connect to server. Please try again later.");
+      setError(t.contact.errorConnection);
     } finally {
       setLoading(false);
     }
@@ -115,7 +115,7 @@ export default function ContactForm() {
         </div>
         <div className="mb-6">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.contact.message} *</label>
-          <textarea name="message" required rows={5} className={`${inputClass} resize-none`} placeholder="Tell us how we can help..." />
+          <textarea name="message" required rows={5} className={`${inputClass} resize-none`} placeholder={t.contact.messagePlaceholder} />
         </div>
         <button
           type="submit"

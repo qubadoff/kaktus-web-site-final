@@ -42,10 +42,10 @@ export default function DemoForm() {
       } else if (res.ok) {
         setSubmitted(true);
       } else {
-        setError("Something went wrong. Please try again.");
+        setError(t.demo.errorGeneral);
       }
     } catch {
-      setError("Could not connect to server. Please try again later.");
+      setError(t.demo.errorConnection);
     } finally {
       setLoading(false);
     }
@@ -110,7 +110,7 @@ export default function DemoForm() {
 
         <div className="mb-4">
           <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.demo.businessName} *</label>
-          <input name="business_name" type="text" required className={inputClass} placeholder="Your Salon Name" />
+          <input name="business_name" type="text" required className={inputClass} placeholder={t.demo.businessNamePlaceholder} />
         </div>
 
         <div className="grid sm:grid-cols-2 gap-4 mb-4">
@@ -118,25 +118,18 @@ export default function DemoForm() {
             <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.demo.businessType}</label>
             <select name="business_type" className={`${inputClass} bg-white`}>
               <option value="">{t.demo.selectType}</option>
-              <option>Hair Salon</option>
-              <option>Beauty Salon</option>
-              <option>Spa &amp; Wellness</option>
-              <option>Barber Shop</option>
-              <option>Nail Studio</option>
-              <option>Fitness / Gym</option>
-              <option>Medical / Clinic</option>
-              <option>Other</option>
+              {t.demo.businessTypes.map((type) => (
+                <option key={type} value={type}>{type}</option>
+              ))}
             </select>
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1.5">{t.demo.teamSize}</label>
             <select name="team_size" className={`${inputClass} bg-white`}>
               <option value="">{t.demo.selectSize}</option>
-              <option>Just me</option>
-              <option>2-5 employees</option>
-              <option>6-15 employees</option>
-              <option>16-50 employees</option>
-              <option>50+ employees</option>
+              {t.demo.teamSizes.map((size) => (
+                <option key={size} value={size}>{size}</option>
+              ))}
             </select>
           </div>
         </div>

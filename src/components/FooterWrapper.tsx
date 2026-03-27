@@ -55,7 +55,7 @@ export default function FooterWrapper() {
     [t.footer.product]: [
       { label: "Kaktus Pro", href: "/features#pro" },
       { label: "Kaktus Booking", href: "/features#booking" },
-      { label: t.footer.resources === "Resurslar" ? "Qiymətlər" : t.nav.pricing, href: "/pricing" },
+      { label: t.nav.pricing, href: "/pricing" },
       { label: t.nav.requestDemo, href: "/demo" },
     ],
     [t.footer.company]: [
