@@ -148,6 +148,33 @@ export default function KaktusBookingPage() {
           </p>
         </div>
 
+        {/* Contact Info */}
+        {contact && (
+          <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-4 mb-5">
+            <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">{l.contact}</p>
+            <div className="flex items-center gap-2 flex-wrap">
+              {contact.phone && (
+                <a href={`tel:${contact.phone}`} className="flex items-center gap-2 bg-white/[0.06] hover:bg-primary/15 rounded-xl px-3.5 py-2.5 text-gray-300 hover:text-primary transition-all">
+                  <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <span className="text-xs font-medium">{contact.phone}</span>
+                </a>
+              )}
+              {contact.email && (
+                <a href={`mailto:${contact.email}`} className="flex items-center gap-2 bg-white/[0.06] hover:bg-primary/15 rounded-xl px-3.5 py-2.5 text-gray-300 hover:text-primary transition-all">
+                  <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span className="text-xs font-medium">{contact.email}</span>
+                </a>
+              )}
+              {socials.map((s) => (
+                <a key={s.key} href={s.href!} target="_blank" rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-xl bg-white/[0.06] hover:bg-primary/15 flex items-center justify-center text-gray-400 hover:text-primary transition-all">
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Features */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5 mb-5">
           {l.features.map((f, i) => (
@@ -161,55 +188,21 @@ export default function KaktusBookingPage() {
           ))}
         </div>
 
-        {/* Download */}
-        <div className="flex items-center gap-2.5 mb-4">
+        {/* Download - Original Store Badges */}
+        <div className="flex items-center justify-center gap-3 mb-4">
           <a href={STORE_LINKS.booking.appStore} target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2.5 bg-white text-gray-900 rounded-2xl py-3 font-semibold text-sm hover:bg-gray-100 active:scale-[0.98] transition-all shadow-lg shadow-white/5">
-            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
+            className="transition-transform hover:scale-105 active:scale-95">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                 alt="App Store" className="h-[44px]" />
           </a>
           <a href={STORE_LINKS.booking.playStore} target="_blank" rel="noopener noreferrer"
-            className="flex-1 flex items-center justify-center gap-2.5 bg-primary text-white rounded-2xl py-3 font-semibold text-sm hover:bg-primary-dark active:scale-[0.98] transition-all shadow-lg shadow-primary/20">
-            <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="currentColor"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.302 2.302-2.302 2.302L15.396 12l2.302-2.492zM5.864 2.658L16.8 9.191l-2.302 2.302L5.864 2.658z"/></svg>
-            Google Play
+            className="transition-transform hover:scale-105 active:scale-95">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                 alt="Google Play" className="h-[44px]" />
           </a>
         </div>
-
-        {/* Contact Info */}
-        {contact && (
-          <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-4 mb-4">
-            <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">{l.contact}</p>
-            <div className="space-y-2.5">
-              {contact.phone && (
-                <a href={`tel:${contact.phone}`} className="flex items-center gap-3 text-gray-300 hover:text-primary transition-colors">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                  </div>
-                  <span className="text-sm">{contact.phone}</span>
-                </a>
-              )}
-              {contact.email && (
-                <a href={`mailto:${contact.email}`} className="flex items-center gap-3 text-gray-300 hover:text-primary transition-colors">
-                  <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  </div>
-                  <span className="text-sm">{contact.email}</span>
-                </a>
-              )}
-            </div>
-
-            {socials.length > 0 && (
-              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/[0.06]">
-                {socials.map((s) => (
-                  <a key={s.key} href={s.href!} target="_blank" rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-white/[0.06] hover:bg-primary/15 flex items-center justify-center text-gray-400 hover:text-primary transition-all">
-                    {s.icon}
-                  </a>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
 
         {/* Bottom */}
         <div className="text-center space-y-1">
