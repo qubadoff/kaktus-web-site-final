@@ -112,29 +112,29 @@ export default function KaktusBookingPage() {
     .map((key) => ({ key, href: contact![key]!, ...socialMeta[key] }));
 
   return (
-    <div className="min-h-svh bg-gradient-to-b from-gray-950 via-[#0a1628] to-gray-950 flex flex-col items-center justify-center px-5 py-8 relative overflow-hidden">
-      <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-primary/[0.05] rounded-full blur-[100px]" />
+    <div className="min-h-svh bg-white flex flex-col items-center justify-center px-5 py-8 relative overflow-hidden">
+      <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[120px]" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-primary/[0.06] rounded-full blur-[100px]" />
 
       <div className="w-full max-w-md relative z-10">
 
         {/* Header: Logo + Lang Switcher */}
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
-            <div className="w-14 h-14 rounded-2xl bg-white/[0.05] border border-white/[0.08] flex items-center justify-center">
+            <div className="w-14 h-14 rounded-2xl bg-gray-50 border border-gray-100 flex items-center justify-center shadow-sm">
               <Image src={logoImg} alt="Kaktus Booking" width={38} height={38} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white leading-tight">Kaktus <span className="text-primary">Booking</span></h1>
-              <p className="text-[11px] text-gray-500 mt-0.5">kaktusbooking.app</p>
+              <h1 className="text-xl font-bold text-gray-900 leading-tight">Kaktus <span className="text-primary">Booking</span></h1>
+              <p className="text-[11px] text-gray-400 mt-0.5">kaktusbooking.app</p>
             </div>
           </div>
-          <div className="flex items-center gap-0.5 bg-white/[0.05] rounded-lg p-0.5">
+          <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5">
             {(["az", "en", "ru"] as Locale[]).map((lang) => {
               const FlagIcon = flags[lang];
               return (
                 <button key={lang} onClick={() => setLocale(lang)}
-                  className={`p-1.5 rounded-md transition-all ${locale === lang ? "bg-white/[0.1]" : "opacity-40 hover:opacity-70"}`}>
+                  className={`p-1.5 rounded-md transition-all ${locale === lang ? "bg-white shadow-sm" : "opacity-40 hover:opacity-70"}`}>
                   <FlagIcon className="w-5 h-3.5" />
                 </button>
               );
@@ -143,19 +143,19 @@ export default function KaktusBookingPage() {
         </div>
 
         {/* Subtitle */}
-        <p className="text-gray-400 text-[13px] leading-relaxed mb-6">{l.subtitle}</p>
+        <p className="text-gray-500 text-[13px] leading-relaxed mb-6">{l.subtitle}</p>
 
         {/* Contact Section */}
         {contact && (
-          <div className="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-4 mb-5">
-            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mb-3">{l.contact}</p>
+          <div className="rounded-2xl bg-gray-50 border border-gray-100 p-4 mb-5">
+            <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-3">{l.contact}</p>
             <div className="space-y-2">
               {contact.phone && (
                 <a href={`tel:${contact.phone}`} className="flex items-center gap-3 group">
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                     <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                   </div>
-                  <span className="text-sm text-gray-300 group-hover:text-primary transition-colors">{contact.phone}</span>
+                  <span className="text-sm text-gray-600 group-hover:text-primary transition-colors">{contact.phone}</span>
                 </a>
               )}
               {contact.email && (
@@ -163,15 +163,15 @@ export default function KaktusBookingPage() {
                   <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                     <svg className="w-3.5 h-3.5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   </div>
-                  <span className="text-sm text-gray-300 group-hover:text-primary transition-colors">{contact.email}</span>
+                  <span className="text-sm text-gray-600 group-hover:text-primary transition-colors">{contact.email}</span>
                 </a>
               )}
             </div>
             {socials.length > 0 && (
-              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-white/[0.05]">
+              <div className="flex items-center gap-2 mt-3 pt-3 border-t border-gray-200">
                 {socials.map((s) => (
                   <a key={s.key} href={s.href} target="_blank" rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-white/[0.04] hover:bg-primary/10 flex items-center justify-center text-gray-500 hover:text-primary transition-all">
+                    className="w-8 h-8 rounded-lg bg-white border border-gray-100 hover:border-primary/30 hover:bg-primary/5 flex items-center justify-center text-gray-400 hover:text-primary transition-all shadow-sm">
                     {s.icon}
                   </a>
                 ))}
@@ -183,19 +183,19 @@ export default function KaktusBookingPage() {
         {/* Features */}
         <div className="grid grid-cols-3 gap-2 mb-6">
           {l.features.map((f, i) => (
-            <div key={i} className="rounded-xl bg-white/[0.03] border border-white/[0.05] p-3 text-center">
+            <div key={i} className="rounded-xl bg-gray-50 border border-gray-100 p-3 text-center hover:border-primary/20 hover:bg-primary/[0.02] transition-all">
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary mx-auto mb-2">
                 {featureIcons[i]}
               </div>
-              <p className="text-[11px] font-medium text-gray-300 leading-tight">{f.title}</p>
+              <p className="text-[11px] font-medium text-gray-700 leading-tight">{f.title}</p>
             </div>
           ))}
         </div>
 
         {/* Download Section */}
-        <div className="rounded-2xl bg-white/[0.03] border border-white/[0.06] p-4 mb-6 text-center">
-          <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mb-2">{l.downloadTitle}</p>
-          <p className="text-[12px] text-gray-400 leading-relaxed mb-4">{l.downloadDesc}</p>
+        <div className="rounded-2xl bg-gray-50 border border-gray-100 p-4 mb-6 text-center">
+          <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-widest mb-2">{l.downloadTitle}</p>
+          <p className="text-[12px] text-gray-500 leading-relaxed mb-4">{l.downloadDesc}</p>
           <div className="flex items-center justify-center gap-3">
             <a href={STORE_LINKS.booking.appStore} target="_blank" rel="noopener noreferrer"
               className="transition-transform hover:scale-105 active:scale-95">
@@ -211,8 +211,8 @@ export default function KaktusBookingPage() {
         </div>
 
         {/* Bottom */}
-        <p className="text-center text-gray-700 text-[10px] tracking-wider">
-          Powered by <a href="https://burncode.org" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-primary transition-colors">Burncode LLC</a>
+        <p className="text-center text-gray-300 text-[10px] tracking-wider">
+          Powered by <a href="https://burncode.org" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors">Burncode LLC</a>
         </p>
       </div>
     </div>
