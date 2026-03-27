@@ -1,3 +1,5 @@
+import { STORE_LINKS } from "@/lib/store-links";
+
 export function AppleIcon({ className = "w-5 h-5" }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 384 512" fill="currentColor">
@@ -16,16 +18,19 @@ export function PlayStoreIcon({ className = "w-5 h-5" }: { className?: string })
 
 interface StoreButtonProps {
   variant?: "light" | "dark";
-  appName: string;
+  app?: "booking" | "pro";
   className?: string;
 }
 
-export function AppStoreButton({ variant = "dark", appName, className = "" }: StoreButtonProps) {
+export function AppStoreButton({ variant = "dark", app = "booking", className = "" }: StoreButtonProps) {
   const isDark = variant === "dark";
+  const href = app === "pro" ? STORE_LINKS.pro.appStore : STORE_LINKS.booking.appStore;
   return (
-    <span
-      role="button"
-      className={`inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all cursor-pointer ${
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all ${
         isDark
           ? "bg-black border-gray-700 hover:border-gray-500"
           : "bg-white border-gray-200 hover:border-primary/40 hover:shadow-md"
@@ -40,16 +45,19 @@ export function AppStoreButton({ variant = "dark", appName, className = "" }: St
           App Store
         </span>
       </span>
-    </span>
+    </a>
   );
 }
 
-export function PlayStoreButton({ variant = "dark", appName, className = "" }: StoreButtonProps) {
+export function PlayStoreButton({ variant = "dark", app = "booking", className = "" }: StoreButtonProps) {
   const isDark = variant === "dark";
+  const href = app === "pro" ? STORE_LINKS.pro.playStore : STORE_LINKS.booking.playStore;
   return (
-    <span
-      role="button"
-      className={`inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all cursor-pointer ${
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`inline-flex items-center gap-3 px-4 py-2.5 rounded-xl border transition-all ${
         isDark
           ? "bg-black border-gray-700 hover:border-gray-500"
           : "bg-white border-gray-200 hover:border-primary/40 hover:shadow-md"
@@ -64,6 +72,6 @@ export function PlayStoreButton({ variant = "dark", appName, className = "" }: S
           Google Play
         </span>
       </span>
-    </span>
+    </a>
   );
 }

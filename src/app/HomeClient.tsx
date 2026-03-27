@@ -467,8 +467,8 @@ export default function HomeClient() {
                 ))}
               </div>
               <div className="mt-8 flex flex-row gap-3">
-                <AppStoreButton variant="light" appName="Kaktus Booking" />
-                <PlayStoreButton variant="light" appName="Kaktus Booking" />
+                <AppStoreButton variant="light" app="booking" />
+                <PlayStoreButton variant="light" app="booking" />
               </div>
             </AnimatedSection>
 

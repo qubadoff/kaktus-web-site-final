@@ -159,8 +159,8 @@ export default async function Footer() {
                 Manage your business — reservations, employees, products & analytics.
               </p>
               <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" appName="Kaktus Pro" />
-                <PlayStoreButton variant="dark" appName="Kaktus Pro" />
+                <AppStoreButton variant="dark" app="pro" />
+                <PlayStoreButton variant="dark" app="pro" />
               </div>
             </div>
 
@@ -179,8 +179,8 @@ export default async function Footer() {
                 Discover, book & enjoy services. AI assistant, ordering & more. Free.
               </p>
               <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" appName="Kaktus Booking" />
-                <PlayStoreButton variant="dark" appName="Kaktus Booking" />
+                <AppStoreButton variant="dark" app="booking" />
+                <PlayStoreButton variant="dark" app="booking" />
               </div>
             </div>
           </div>

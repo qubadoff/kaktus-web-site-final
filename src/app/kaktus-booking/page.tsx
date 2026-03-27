@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logoImg from "@/app/images/logo.png";
+import { STORE_LINKS } from "@/lib/store-links";
 
 const features = [
   {
@@ -101,7 +102,7 @@ export default function KaktusBookingPage() {
         <div className="space-y-3">
           <div className="flex items-center gap-3">
             <a
-              href="https://apps.apple.com/app/kaktus-booking/id6743091818"
+              href={STORE_LINKS.booking.appStore}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-3 bg-white text-gray-900 rounded-2xl py-3.5 font-semibold text-sm hover:bg-gray-100 active:scale-[0.98] transition-all shadow-lg shadow-white/5"
@@ -112,7 +113,7 @@ export default function KaktusBookingPage() {
               App Store
             </a>
             <a
-              href="https://play.google.com/store/apps/details?id=com.kaktus.booking"
+              href={STORE_LINKS.booking.playStore}
               target="_blank"
               rel="noopener noreferrer"
               className="flex-1 flex items-center justify-center gap-3 bg-primary text-white rounded-2xl py-3.5 font-semibold text-sm hover:bg-primary-dark active:scale-[0.98] transition-all shadow-lg shadow-primary/20"

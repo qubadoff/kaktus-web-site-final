@@ -126,8 +126,8 @@ export default function FooterWrapper() {
               </div>
               <p className="text-xs text-gray-500 mb-3">{t.footer.proDesc}</p>
               <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" appName="Kaktus Pro" />
-                <PlayStoreButton variant="dark" appName="Kaktus Pro" />
+                <AppStoreButton variant="dark" app="pro" />
+                <PlayStoreButton variant="dark" app="pro" />
               </div>
             </div>
             <div>
@@ -138,8 +138,8 @@ export default function FooterWrapper() {
               </div>
               <p className="text-xs text-gray-500 mb-3">{t.footer.bookingDesc}</p>
               <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" appName="Kaktus Booking" />
-                <PlayStoreButton variant="dark" appName="Kaktus Booking" />
+                <AppStoreButton variant="dark" app="booking" />
+                <PlayStoreButton variant="dark" app="booking" />
               </div>
             </div>
           </div>
