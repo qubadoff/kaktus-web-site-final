@@ -12,6 +12,7 @@ import {
 } from "@/components/SocialIcons";
 import { useLocale } from "@/i18n/LocaleContext";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ensureUrl, type ContactInfo } from "@/lib/api";
 
 const socialConfig = [
@@ -35,8 +36,11 @@ const fallbackContact: ContactInfo = {
 };
 
 export default function FooterWrapper() {
+  const pathname = usePathname();
   const { t } = useLocale();
   const [contact, setContact] = useState<ContactInfo>(fallbackContact);
+
+  if (pathname === "/kaktus-booking") return null;
 
   useEffect(() => {
     fetch("https://p.kaktusbooking.app/business/support/contactInfo", {

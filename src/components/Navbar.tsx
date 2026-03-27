@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/Logo";
@@ -17,7 +18,10 @@ const flagMap: Record<Locale, ComponentType<{ className?: string }>> = {
 };
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  if (pathname === "/kaktus-booking") return null;
   const [langOpen, setLangOpen] = useState(false);
   const { t, locale, setLocale } = useLocale();
 
