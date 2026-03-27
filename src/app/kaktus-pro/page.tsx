@@ -12,56 +12,56 @@ const flags = { az: AzFlag, en: EnFlag, ru: RuFlag };
 
 const t = {
   az: {
-    subtitle: "Salonlar, klinikalar və xidmət mərkəzləri — hamısı bir tətbiqdə. Pulsuz rezervasiya et, keyfini yaşa.",
+    subtitle: "Rezervasiyaları, işçiləri, məhsulları və müştəriləri bir tətbiqdə idarə edin. Güclü analitika ilə biznesinizi böyüdün.",
     features: [
-      { title: "Asan Rezervasiya", desc: "Bir neçə toxunuşla istədiyin salonda randevu al" },
-      { title: "Yaxınlıqdakı Salonlar", desc: "Xəritə ilə ətrafındakı ən yaxşı yerləri kəşf et" },
-      { title: "Mesajlaşma", desc: "Salonla birbaşa əlaqə saxla, suallarını ver" },
-      { title: "AI Köməkçi", desc: "Süni intellekt ilə sənə uyğun xidmət tap" },
-      { title: "Məhsul Sifarişi", desc: "Sevdiyin salonun məhsullarını onlayn sifariş et" },
-      { title: "Rəylər & Reytinq", desc: "Əvvəlki müştərilərin rəylərinə bax, öz rəyini yaz" },
+      { title: "Rezervasiya İdarəsi" },
+      { title: "İşçi İdarəetməsi" },
+      { title: "Müştəri Bazası" },
+      { title: "Məhsul & Sifarişlər" },
+      { title: "Analitika" },
+      { title: "Push Bildirişlər" },
     ],
     contact: "Əlaqə",
     downloadTitle: "Tətbiqi Yüklə",
-    downloadDesc: "Kaktus Booking tətbiqini pulsuz yükləyin və sevimli salonlarınızda asanlıqla rezervasiya edin.",
+    downloadDesc: "Kaktus Pro tətbiqini pulsuz yükləyin və biznesinizi mobil cihazınızdan idarə edin.",
   },
   en: {
-    subtitle: "Salons, clinics and service centers — all in one app. Book for free, enjoy the experience.",
+    subtitle: "Manage reservations, employees, products and customers in one app. Grow your business with powerful analytics.",
     features: [
-      { title: "Easy Booking", desc: "Book an appointment at your favorite salon in a few taps" },
-      { title: "Nearby Salons", desc: "Discover the best places around you on the map" },
-      { title: "Messaging", desc: "Contact the salon directly, ask your questions" },
-      { title: "AI Assistant", desc: "Find the right service for you with artificial intelligence" },
-      { title: "Product Orders", desc: "Order products from your favorite salon online" },
-      { title: "Reviews & Ratings", desc: "Read reviews from previous customers, write your own" },
+      { title: "Reservation Management" },
+      { title: "Employee Management" },
+      { title: "Customer Database" },
+      { title: "Products & Orders" },
+      { title: "Analytics" },
+      { title: "Push Notifications" },
     ],
     contact: "Contact",
     downloadTitle: "Download the App",
-    downloadDesc: "Download Kaktus Booking for free and easily book appointments at your favorite salons.",
+    downloadDesc: "Download Kaktus Pro for free and manage your business from your mobile device.",
   },
   ru: {
-    subtitle: "Салоны, клиники и сервисные центры — всё в одном приложении. Бронируйте бесплатно, наслаждайтесь.",
+    subtitle: "Управляйте бронированиями, сотрудниками, товарами и клиентами в одном приложении. Развивайте бизнес с мощной аналитикой.",
     features: [
-      { title: "Простое бронирование", desc: "Запишитесь в любимый салон в несколько касаний" },
-      { title: "Ближайшие салоны", desc: "Откройте лучшие места вокруг вас на карте" },
-      { title: "Сообщения", desc: "Свяжитесь с салоном напрямую, задайте вопросы" },
-      { title: "AI помощник", desc: "Найдите подходящую услугу с помощью ИИ" },
-      { title: "Заказ товаров", desc: "Закажите товары из любимого салона онлайн" },
-      { title: "Отзывы и рейтинг", desc: "Читайте отзывы клиентов, оставляйте свои" },
+      { title: "Управление бронированиями" },
+      { title: "Управление сотрудниками" },
+      { title: "База клиентов" },
+      { title: "Товары и заказы" },
+      { title: "Аналитика" },
+      { title: "Push-уведомления" },
     ],
     contact: "Контакт",
     downloadTitle: "Скачать приложение",
-    downloadDesc: "Скачайте Kaktus Booking бесплатно и легко бронируйте в любимых салонах.",
+    downloadDesc: "Скачайте Kaktus Pro бесплатно и управляйте бизнесом с мобильного устройства.",
   },
 };
 
 const featureIcons = [
   <svg key="0" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>,
-  <svg key="1" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
-  <svg key="2" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" /></svg>,
-  <svg key="3" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>,
-  <svg key="4" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
-  <svg key="5" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>,
+  <svg key="1" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>,
+  <svg key="2" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>,
+  <svg key="3" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>,
+  <svg key="4" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>,
+  <svg key="5" className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>,
 ];
 
 interface ContactInfo {
@@ -91,7 +91,7 @@ function detectLocale(): Locale {
   return "az";
 }
 
-export default function KaktusBookingPage() {
+export default function KaktusProPage() {
   const [locale, setLocale] = useState<Locale>("az");
   const [contact, setContact] = useState<ContactInfo | null>(null);
 
@@ -112,20 +112,20 @@ export default function KaktusBookingPage() {
     .map((key) => ({ key, href: contact![key]!, ...socialMeta[key] }));
 
   return (
-    <div className="min-h-svh bg-gradient-to-b from-[#1a8a3e] via-[#15753a] to-[#0d5a30] flex flex-col items-center justify-center px-5 py-8 relative overflow-hidden">
-      <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-white/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-white/[0.06] rounded-full blur-[100px]" />
+    <div className="min-h-svh bg-gradient-to-b from-[#1a3a6e] via-[#14305e] to-[#0b1f42] flex flex-col items-center justify-center px-5 py-8 relative overflow-hidden">
+      <div className="absolute top-[-20%] right-[-10%] w-[500px] h-[500px] bg-blue-400/[0.04] rounded-full blur-[120px]" />
+      <div className="absolute bottom-[-20%] left-[-10%] w-[400px] h-[400px] bg-blue-400/[0.06] rounded-full blur-[100px]" />
 
       <div className="w-full max-w-md relative z-10">
 
-        {/* Header: Logo + Lang Switcher */}
+        {/* Header */}
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
             <div className="w-14 h-14 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center">
-              <Image src={logoImg} alt="Kaktus Booking" width={38} height={38} />
+              <Image src={logoImg} alt="Kaktus Pro" width={38} height={38} />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-white leading-tight">Kaktus <span className="text-white/80">Booking</span></h1>
+              <h1 className="text-xl font-bold text-white leading-tight">Kaktus <span className="text-blue-300">Pro</span></h1>
               <p className="text-[11px] text-white/40 mt-0.5">kaktusbooking.app</p>
             </div>
           </div>
@@ -145,23 +145,23 @@ export default function KaktusBookingPage() {
         {/* Subtitle */}
         <p className="text-white/60 text-[13px] leading-relaxed mb-6">{l.subtitle}</p>
 
-        {/* Contact Section */}
+        {/* Contact */}
         {contact && (
           <div className="rounded-2xl bg-white/[0.07] border border-white/[0.1] p-4 mb-5">
             <p className="text-[10px] font-semibold text-white/30 uppercase tracking-widest mb-3">{l.contact}</p>
             <div className="space-y-2">
               {contact.phone && (
                 <a href={`tel:${contact.phone}`} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <svg className="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <div className="w-8 h-8 rounded-lg bg-blue-400/15 flex items-center justify-center">
+                    <svg className="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                   </div>
                   <span className="text-sm text-white/70 group-hover:text-white transition-colors">{contact.phone}</span>
                 </a>
               )}
               {contact.email && (
                 <a href={`mailto:${contact.email}`} className="flex items-center gap-3 group">
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <svg className="w-3.5 h-3.5 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <div className="w-8 h-8 rounded-lg bg-blue-400/15 flex items-center justify-center">
+                    <svg className="w-3.5 h-3.5 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   </div>
                   <span className="text-sm text-white/70 group-hover:text-white transition-colors">{contact.email}</span>
                 </a>
@@ -184,7 +184,7 @@ export default function KaktusBookingPage() {
         <div className="grid grid-cols-3 gap-2 mb-6">
           {l.features.map((f, i) => (
             <div key={i} className="rounded-xl bg-white/[0.07] border border-white/[0.1] p-3 text-center hover:bg-white/[0.12] transition-all">
-              <div className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center text-white mx-auto mb-2">
+              <div className="w-8 h-8 rounded-lg bg-blue-400/15 flex items-center justify-center text-blue-300 mx-auto mb-2">
                 {featureIcons[i]}
               </div>
               <p className="text-[11px] font-medium text-white/80 leading-tight">{f.title}</p>
@@ -192,17 +192,17 @@ export default function KaktusBookingPage() {
           ))}
         </div>
 
-        {/* Download Section */}
+        {/* Download */}
         <div className="rounded-2xl bg-white/[0.07] border border-white/[0.1] p-4 mb-6 text-center">
           <p className="text-[10px] font-semibold text-white/30 uppercase tracking-widest mb-2">{l.downloadTitle}</p>
           <p className="text-[12px] text-white/50 leading-relaxed mb-4">{l.downloadDesc}</p>
           <div className="flex items-center justify-center gap-3">
-            <a href={STORE_LINKS.booking.appStore} target="_blank" rel="noopener noreferrer"
+            <a href={STORE_LINKS.pro.appStore} target="_blank" rel="noopener noreferrer"
               className="transition-transform hover:scale-105 active:scale-95">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store" className="h-10" />
             </a>
-            <a href={STORE_LINKS.booking.playStore} target="_blank" rel="noopener noreferrer"
+            <a href={STORE_LINKS.pro.playStore} target="_blank" rel="noopener noreferrer"
               className="transition-transform hover:scale-105 active:scale-95">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" className="h-10" />

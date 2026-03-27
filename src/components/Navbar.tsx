@@ -21,7 +21,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  if (pathname === "/kaktus-booking") return null;
+  if (pathname === "/kaktus-booking" || pathname === "/kaktus-pro") return null;
   const [langOpen, setLangOpen] = useState(false);
   const { t, locale, setLocale } = useLocale();
 

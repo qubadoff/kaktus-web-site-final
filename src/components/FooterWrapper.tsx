@@ -40,7 +40,7 @@ export default function FooterWrapper() {
   const { t } = useLocale();
   const [contact, setContact] = useState<ContactInfo>(fallbackContact);
 
-  if (pathname === "/kaktus-booking") return null;
+  if (pathname === "/kaktus-booking" || pathname === "/kaktus-pro") return null;
 
   useEffect(() => {
     fetch("https://p.kaktusbooking.app/business/support/contactInfo", {
