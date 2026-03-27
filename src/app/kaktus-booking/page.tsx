@@ -150,28 +150,30 @@ export default function KaktusBookingPage() {
 
         {/* Contact Info */}
         {contact && (
-          <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-2xl p-4 mb-5">
-            <p className="text-xs font-semibold text-white/30 uppercase tracking-wider mb-3">{l.contact}</p>
-            <div className="flex items-center gap-2 flex-wrap">
+          <div className="mb-5 text-center">
+            <div className="flex items-center justify-center gap-4 mb-3">
               {contact.phone && (
-                <a href={`tel:${contact.phone}`} className="flex items-center gap-2 bg-white/[0.06] hover:bg-primary/15 rounded-xl px-3.5 py-2.5 text-gray-300 hover:text-primary transition-all">
-                  <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-                  <span className="text-xs font-medium">{contact.phone}</span>
+                <a href={`tel:${contact.phone}`} className="text-gray-400 hover:text-primary text-sm transition-colors">
+                  {contact.phone}
                 </a>
               )}
+              {contact.phone && contact.email && <span className="text-gray-700">|</span>}
               {contact.email && (
-                <a href={`mailto:${contact.email}`} className="flex items-center gap-2 bg-white/[0.06] hover:bg-primary/15 rounded-xl px-3.5 py-2.5 text-gray-300 hover:text-primary transition-all">
-                  <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  <span className="text-xs font-medium">{contact.email}</span>
+                <a href={`mailto:${contact.email}`} className="text-gray-400 hover:text-primary text-sm transition-colors">
+                  {contact.email}
                 </a>
               )}
-              {socials.map((s) => (
-                <a key={s.key} href={s.href!} target="_blank" rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white/[0.06] hover:bg-primary/15 flex items-center justify-center text-gray-400 hover:text-primary transition-all">
-                  {s.icon}
-                </a>
-              ))}
             </div>
+            {socials.length > 0 && (
+              <div className="flex items-center justify-center gap-3">
+                {socials.map((s) => (
+                  <a key={s.key} href={s.href!} target="_blank" rel="noopener noreferrer"
+                    className="text-gray-500 hover:text-primary transition-colors">
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         )}
 
