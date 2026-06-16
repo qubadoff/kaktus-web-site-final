@@ -35,7 +35,7 @@ export default function KaktusBookingDownloadPage() {
             <img
               src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
               alt="App Store"
-              className="h-11"
+              className="h-16"
             />
           </a>
           <a
@@ -48,7 +48,7 @@ export default function KaktusBookingDownloadPage() {
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
               alt="Google Play"
-              className="h-11"
+              className="h-16"
             />
           </a>
         </div>
