@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Kaktus Systems",
+    name: "Kaktus Booking",
     short_name: "Kaktus",
     description: "Rezervasiya və Biznes İdarəetmə Platforması",
     start_url: "/",

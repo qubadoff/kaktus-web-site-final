@@ -20,16 +20,23 @@ const flagMap: Record<Locale, ComponentType<{ className?: string }>> = {
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-
-  if (pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download") return null;
   const [langOpen, setLangOpen] = useState(false);
   const { t, locale, setLocale } = useLocale();
+
+  // After every hook, never between them. Bailing out early here meant
+  // this component ran five hooks on one route and two on another, and
+  // React counts them: navigating in from another page threw "rendered
+  // fewer hooks than expected" and took the whole app down with it.
+  const bare =
+    pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download";
 
   const links = [
     { href: "/", label: t.nav.home },
     { href: "/about", label: t.nav.about },
     { href: "/contact", label: t.nav.contact },
   ];
+
+  if (bare) return null;
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-lg border-b border-gray-200/50">

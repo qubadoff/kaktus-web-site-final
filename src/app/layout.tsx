@@ -13,14 +13,14 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "Kaktus Systems — Rezervasiya və Biznes İdarəetmə Platforması",
-    template: "%s | Kaktus Systems",
+    default: "Kaktus Booking — Rezervasiya və Biznes İdarəetmə Platforması",
+    template: "%s | Kaktus Booking",
   },
   description:
-    "Xidmət biznesinizi Kaktus Systems ilə gücləndirin. Qüsursuz planlaşdırma, sifariş və ünsiyyət — bizneslər və müştərilər üçün.",
+    "Xidmət biznesinizi Kaktus Booking ilə gücləndirin. Qüsursuz planlaşdırma, sifariş və ünsiyyət — bizneslər və müştərilər üçün.",
   metadataBase: new URL("https://kaktusbooking.app"),
   openGraph: {
-    siteName: "Kaktus Systems",
+    siteName: "Kaktus Booking",
     type: "website",
     locale: "az_AZ",
   },

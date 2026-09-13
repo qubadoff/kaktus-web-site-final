@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Əlaqə | Kaktus Systems",
+  title: "Əlaqə | Kaktus Booking",
   description: "Bizimlə əlaqə saxlayın — suallarınız, təklifləriniz və ya tərəfdaşlıq sorğularınız üçün.",
   openGraph: {
-    title: "Əlaqə | Kaktus Systems",
+    title: "Əlaqə | Kaktus Booking",
     description: "Bizimlə əlaqə saxlayın — suallarınız, təklifləriniz və ya tərəfdaşlıq sorğularınız üçün.",
-    siteName: "Kaktus Systems",
+    siteName: "Kaktus Booking",
     type: "website",
   },
 };

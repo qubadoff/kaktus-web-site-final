@@ -40,8 +40,6 @@ export default function FooterWrapper() {
   const { t } = useLocale();
   const [contact, setContact] = useState<ContactInfo>(fallbackContact);
 
-  if (pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download") return null;
-
   useEffect(() => {
     fetch("https://p.kaktusbooking.app/business/support/contactInfo", {
       headers: { Accept: "application/json" },
@@ -50,6 +48,11 @@ export default function FooterWrapper() {
       .then((data) => { if (data) setContact(data); })
       .catch(() => {});
   }, []);
+
+  // Same rule as the navbar: the bail-out cannot sit above a hook.
+  if (pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download") {
+    return null;
+  }
 
   const socials = socialConfig
     .filter((s) => contact[s.key])
@@ -125,7 +128,18 @@ export default function FooterWrapper() {
         </div>
 
         <div className="border-t border-gray-800 mt-10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-gray-500">&copy; 2026 Kaktus Systems. {t.footer.rights}</p>
+          <p className="text-sm text-gray-500">
+            &copy; 2026 Kaktus Booking. {t.footer.rights}
+            <span className="mx-2 text-gray-700">·</span>
+            <a
+              href="https://burncode.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-colors"
+            >
+              Developed by Burncode LLC
+            </a>
+          </p>
           {socials.length > 0 && (
             <div className="flex gap-4">
               {socials.map((s) => (

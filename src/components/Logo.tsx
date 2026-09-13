@@ -18,7 +18,7 @@ export default function Logo({ variant = "dark", className = "" }: LogoProps) {
           kaktus
         </span>
         <span className={`text-[10px] font-semibold uppercase tracking-[0.2em] ${subtextColor}`}>
-          systems
+          booking
         </span>
       </div>
     </a>
