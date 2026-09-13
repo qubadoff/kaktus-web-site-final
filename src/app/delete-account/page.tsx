@@ -27,7 +27,7 @@ export default function DeleteAccountPage() {
                 <li className="flex gap-3">
                   <span className="flex-shrink-0 w-7 h-7 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-sm font-bold">1</span>
                   <div>
-                    <p className="font-medium text-gray-800">Open the Kaktus Pro app</p>
+                    <p className="font-medium text-gray-800">Open the Kaktus Booking app</p>
                     <p className="text-sm text-gray-500">Log in to your account if you haven't already.</p>
                   </div>
                 </li>

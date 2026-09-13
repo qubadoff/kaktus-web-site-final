@@ -40,7 +40,7 @@ export default function FooterWrapper() {
   const { t } = useLocale();
   const [contact, setContact] = useState<ContactInfo>(fallbackContact);
 
-  if (pathname === "/kaktus-booking" || pathname === "/kaktus-pro" || pathname === "/kaktus-booking-download") return null;
+  if (pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download") return null;
 
   useEffect(() => {
     fetch("https://p.kaktusbooking.app/business/support/contactInfo", {
@@ -56,12 +56,6 @@ export default function FooterWrapper() {
     .map((s) => ({ ...s, href: ensureUrl(contact[s.key]) ?? contact[s.key]! }));
 
   const footerLinks = {
-    [t.footer.product]: [
-      { label: "Kaktus Pro", href: "/features#pro" },
-      { label: "Kaktus Booking", href: "/features#booking" },
-      { label: t.nav.pricing, href: "/pricing" },
-      { label: t.nav.requestDemo, href: "/demo" },
-    ],
     [t.footer.company]: [
       { label: t.footer.aboutUs, href: "/about" },
       { label: t.footer.contact, href: "/contact" },
@@ -102,7 +96,7 @@ export default function FooterWrapper() {
           </div>
 
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title} className="lg:col-span-2">
+            <div key={title} className="lg:col-span-3">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-300 mb-4">{title}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
@@ -117,30 +111,15 @@ export default function FooterWrapper() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-10">
-          <div className="grid sm:grid-cols-2 gap-10">
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center"><span className="text-white text-[9px] font-bold">K</span></div>
-                <span className="text-sm font-bold text-white">Kaktus Pro</span>
-                <span className="text-[10px] bg-primary/20 text-primary px-2 py-0.5 rounded-full font-medium">{t.footer.business}</span>
-              </div>
-              <p className="text-xs text-gray-500 mb-3">{t.footer.proDesc}</p>
-              <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" app="pro" />
-                <PlayStoreButton variant="dark" app="pro" />
-              </div>
+          <div className="max-w-sm">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center"><span className="text-white text-[9px] font-bold">K</span></div>
+              <span className="text-sm font-bold text-white">Kaktus Booking</span>
             </div>
-            <div>
-              <div className="flex items-center gap-2 mb-3">
-                <div className="w-6 h-6 bg-primary rounded-md flex items-center justify-center"><span className="text-white text-[9px] font-bold">K</span></div>
-                <span className="text-sm font-bold text-white">Kaktus Booking</span>
-                <span className="text-[10px] bg-gray-700 text-gray-300 px-2 py-0.5 rounded-full font-medium">{t.footer.customer}</span>
-              </div>
-              <p className="text-xs text-gray-500 mb-3">{t.footer.bookingDesc}</p>
-              <div className="flex gap-2 flex-wrap">
-                <AppStoreButton variant="dark" app="booking" />
-                <PlayStoreButton variant="dark" app="booking" />
-              </div>
+            <p className="text-xs text-gray-500 mb-3">{t.footer.bookingDesc}</p>
+            <div className="flex gap-2 flex-wrap">
+              <AppStoreButton variant="dark" app="booking" />
+              <PlayStoreButton variant="dark" app="booking" />
             </div>
           </div>
         </div>

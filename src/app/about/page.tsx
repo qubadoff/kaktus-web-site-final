@@ -199,7 +199,7 @@ export default function AboutPage() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/demo"
+                href="/kaktus-booking-download"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition-colors"
               >
                 {t.cta.cta1} <ArrowRight size={18} />

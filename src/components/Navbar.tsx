@@ -21,15 +21,13 @@ export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  if (pathname === "/kaktus-booking" || pathname === "/kaktus-pro" || pathname === "/kaktus-booking-download") return null;
+  if (pathname === "/kaktus-booking" || pathname === "/kaktus-booking-download") return null;
   const [langOpen, setLangOpen] = useState(false);
   const { t, locale, setLocale } = useLocale();
 
   const links = [
     { href: "/", label: t.nav.home },
     { href: "/about", label: t.nav.about },
-    { href: "/features", label: t.nav.features },
-    { href: "/pricing", label: t.nav.pricing },
     { href: "/contact", label: t.nav.contact },
   ];
 
@@ -92,10 +90,10 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/demo"
+              href="/kaktus-booking-download"
               className="px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full hover:bg-primary-dark transition-colors"
             >
-              {t.nav.requestDemo}
+              {t.nav.downloadApp}
             </Link>
           </div>
 
@@ -164,11 +162,11 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/demo"
+                href="/kaktus-booking-download"
                 onClick={() => setOpen(false)}
                 className="block w-full text-center px-5 py-2.5 text-sm font-semibold text-white bg-primary rounded-full"
               >
-                {t.nav.requestDemo}
+                {t.nav.downloadApp}
               </Link>
             </div>
           </motion.div>

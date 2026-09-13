@@ -24,7 +24,7 @@ interface StoreButtonProps {
 
 export function AppStoreButton({ variant = "dark", app = "booking", className = "" }: StoreButtonProps) {
   const isDark = variant === "dark";
-  const href = app === "pro" ? STORE_LINKS.pro.appStore : STORE_LINKS.booking.appStore;
+  const href = STORE_LINKS.booking.appStore;
   return (
     <a
       href={href}
@@ -51,7 +51,7 @@ export function AppStoreButton({ variant = "dark", app = "booking", className = 
 
 export function PlayStoreButton({ variant = "dark", app = "booking", className = "" }: StoreButtonProps) {
   const isDark = variant === "dark";
-  const href = app === "pro" ? STORE_LINKS.pro.playStore : STORE_LINKS.booking.playStore;
+  const href = STORE_LINKS.booking.playStore;
   return (
     <a
       href={href}

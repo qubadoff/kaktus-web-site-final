@@ -41,38 +41,6 @@ export default function HomeClient() {
     { value: "99.9%", label: t.stats.uptime },
   ];
 
-  const proHighlights = [
-    {
-      icon: BarChart3,
-      title: t.proSection.features.revenue.title,
-      description: t.proSection.features.revenue.desc,
-    },
-    {
-      icon: Users,
-      title: t.proSection.features.team.title,
-      description: t.proSection.features.team.desc,
-    },
-    {
-      icon: Calendar,
-      title: t.proSection.features.scheduling.title,
-      description: t.proSection.features.scheduling.desc,
-    },
-    {
-      icon: ShoppingBag,
-      title: t.proSection.features.products.title,
-      description: t.proSection.features.products.desc,
-    },
-    {
-      icon: Bell,
-      title: t.proSection.features.alerts.title,
-      description: t.proSection.features.alerts.desc,
-    },
-    {
-      icon: TrendingUp,
-      title: t.proSection.features.growth.title,
-      description: t.proSection.features.growth.desc,
-    },
-  ];
 
   const bookingFeatures = [
     { icon: MapPin, text: t.bookingSection.features.map },
@@ -107,7 +75,7 @@ export default function HomeClient() {
   ];
   return (
     <>
-      {/* Hero — Kaktus Pro Focused */}
+      {/* Hero */}
       <section className="relative pt-28 pb-0 lg:pt-32 overflow-hidden bg-dark">
         {/* Background effects */}
         <div className="absolute inset-0">
@@ -172,7 +140,7 @@ export default function HomeClient() {
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="mt-6 text-lg text-gray-400 leading-relaxed"
               >
-                <strong className="text-white">Kaktus Pro</strong> {t.hero.description}
+                <strong className="text-white">Kaktus Booking</strong> {t.hero.description}
               </motion.p>
 
               <motion.div
@@ -182,14 +150,14 @@ export default function HomeClient() {
                 className="mt-8 flex flex-col sm:flex-row gap-3"
               >
                 <Link
-                  href="/demo"
+                  href="/kaktus-booking-download"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-dark bg-primary rounded-full hover:bg-primary-light transition-all hover:shadow-lg hover:shadow-primary/25"
                 >
                   {t.hero.cta1}
                   <ArrowRight size={18} />
                 </Link>
                 <Link
-                  href="/features#pro"
+                  href="/kaktus-booking"
                   className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold text-white border border-gray-600 rounded-full hover:border-primary/50 hover:bg-white/5 transition-all"
                 >
                   {t.hero.cta2}
@@ -241,8 +209,8 @@ export default function HomeClient() {
                         <span className="text-white text-xs font-bold">K</span>
                       </div>
                       <div>
-                        <p className="text-gray-900 text-sm font-bold">Kaktus Pro</p>
-                        <p className="text-gray-400 text-[10px]">Business Dashboard</p>
+                        <p className="text-gray-900 text-sm font-bold">Kaktus Booking</p>
+                        <p className="text-gray-400 text-[10px]">Rezervasiya</p>
                       </div>
                     </div>
                     <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
@@ -399,50 +367,6 @@ export default function HomeClient() {
         </div>
       </section>
 
-      {/* Kaktus Pro — Feature Spotlight */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center mb-16">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-dark text-white text-sm font-medium rounded-full mb-4">
-              <Zap size={14} className="text-primary" />
-              {t.proSection.badge}
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark">
-              {t.proSection.title} <span className="text-primary">{t.proSection.titleHighlight}</span>
-            </h2>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-              {t.proSection.description}
-            </p>
-          </AnimatedSection>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {proHighlights.map((f, i) => (
-              <AnimatedSection key={f.title} delay={(i % 3) * 0.1}>
-                <div className="group bg-gray-50 border border-gray-200 rounded-2xl p-7 h-full hover:bg-dark hover:border-dark transition-all duration-300">
-                  <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
-                    <f.icon size={22} className="text-primary" />
-                  </div>
-                  <h3 className="text-lg font-bold text-dark group-hover:text-white transition-colors mb-2">
-                    {f.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 group-hover:text-gray-400 transition-colors leading-relaxed">
-                    {f.description}
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-
-          <AnimatedSection className="text-center mt-12">
-            <Link
-              href="/features#pro"
-              className="inline-flex items-center gap-2 px-8 py-3.5 text-base font-semibold text-white bg-dark rounded-full hover:bg-dark-light transition-colors"
-            >
-              {t.proSection.cta} <ArrowRight size={18} />
-            </Link>
-          </AnimatedSection>
-        </div>
-      </section>
 
       {/* Kaktus Booking — Customer App */}
       <section className="py-24 bg-gradient-to-b from-primary-50 to-white">
@@ -613,14 +537,14 @@ export default function HomeClient() {
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/demo"
+                href="/kaktus-booking-download"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-dark bg-primary rounded-full hover:bg-primary-light transition-all hover:shadow-lg hover:shadow-primary/25"
               >
                 {t.cta.cta1}
                 <ArrowRight size={18} />
               </Link>
               <Link
-                href="/pricing"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base font-semibold text-white border-2 border-gray-600 rounded-full hover:border-primary/50 transition-colors"
               >
                 {t.cta.cta2}
